@@ -9,3 +9,8 @@ export interface iLicenseBody {
     commercialRevShare: number;
     type: 'commercial' | 'non-commercial';
 }
+
+export interface iAttachLicenseBody {
+    licenseTermsId: string;
+    ipId: `0x${string}`;
+}

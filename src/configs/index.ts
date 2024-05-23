@@ -14,3 +14,4 @@ const config: StoryConfig = {
 export const client = StoryClient.newClient(config);
 // Story Protocol API KEY
 export const X_API_KEY = process.env.X_API_KEY
+export const LICENSE_CURRENCY = process.env.LICENSE_CURRENCY

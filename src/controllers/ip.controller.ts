@@ -1,6 +1,6 @@
 import { Body, Controller, Post, Res } from '@nestjs/common';
 import { Response } from 'express';
-import { iRegisterBody } from 'src/interfaces/ip';
+import { iLicenseBody, iRegisterBody } from 'src/interfaces/ip';
 import { IpService } from 'src/providers/ip.service';
 
 @Controller('ip')
@@ -18,5 +18,26 @@ export class IpController {
 
     const response = await this.ipService.register(body)
     return res.json({ success: true, msg: 'ip_registered', data: response });
+  }
+
+  @Post('/register-license')
+  async registerLicense(@Body() body: iLicenseBody, @Res() res: Response) {
+    const { currency, mintingFee, commercialRevShare, type } = body
+    console.log('Registing Licence:', body)
+    if (!type) {
+        return res.json({ success: false, msg: 'type_missing' });
+    }
+
+    let response = {}
+    if (type === 'commercial') {
+        if (!(currency && mintingFee && commercialRevShare)) {
+            return res.json({ success: false, msg: 'data_missing' });
+        }
+        response = await this.ipService.registerCommercialLicense(body)
+    }
+    if (type === 'non-commercial') {
+        response = await this.ipService.registerNonCommercialLicense()
+    }
+    return res.json({ success: true, msg: 'license_registered' });
   }
 }

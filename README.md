@@ -26,6 +26,13 @@
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
+Decentralized IP Management System API Server
+
+- Register an NFT to IP Asset
+- Register a commercial / non-commercial license
+- Attach License to the IP Asset
+- Mint IPA Token
+
 ## Installation
 
 ```bash
@@ -58,15 +65,10 @@ $ npm run test:e2e
 $ npm run test:cov
 ```
 
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
 ## Stay in touch
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+- Main Developer - [Ken Ho](https://www.linkedin.com/in/mrkhc0626)
+- Twitter - [@mrkhc0626](https://twitter.com/mrkhc0626)
 
 ## License
 

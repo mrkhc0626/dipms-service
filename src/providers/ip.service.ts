@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { client } from 'src/configs';
-import { iAttachLicenseBody, iLicenseBody, iRegisterBody } from 'src/interfaces/ip';
+import { iAttachLicenseBody, iLicenseBody, iMintIPATokenBody, iRegisterBody } from 'src/interfaces/ip';
 
 @Injectable()
 export class IpService {
@@ -65,5 +65,18 @@ export class IpService {
     } catch(e) {
       console.log(`License Terms already attached to this IPA.`)
     }
+  }
+
+  // Mint IPA Token
+  async mintIPAToken(data: iMintIPATokenBody) {
+    const response = await client.license.mintLicenseTokens({
+      licenseTermsId: data.licenseTermsId, 
+      licensorIpId: data.licensorIpId,
+      receiver: data.receiver, 
+      amount: 1, 
+      txOptions: { waitForTransaction: true }
+   });
+   
+   console.log(`License Token minted at transaction hash ${response.txHash}, License ID: ${response.licenseTokenId}`)
   }
 }
